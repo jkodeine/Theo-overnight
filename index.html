@@ -131,6 +131,10 @@ a{color:var(--green);font-weight:600}
 .panel{display:flex;flex-direction:column;gap:15px}
 .js .panel{display:none}
 .js .panel.on{display:flex}
+@media (min-width:700px){
+  .wrap{max-width:620px}
+  .tabs{flex-wrap:wrap;overflow-x:visible;justify-content:center}
+}
 @media print{.tabs{display:none}.js .panel{display:flex}}
 </style>
 
@@ -253,35 +257,35 @@ a{color:var(--green);font-weight:600}
         <span class="cue solid">코 <small>nose</small></span>
         <span class="cue solid">Down</span>
         <span class="cue solid">얼짱</span>
+        <span class="cue solid">Stand</span>
+        <span class="cue solid">다른 손 <small>other paw</small></span>
+        <span class="cue solid">기도</span>
+        <span class="cue solid">Quiet</span>
+        <span class="cue solid">Up</span>
+        <span class="cue solid">High five</span>
       </div>
     </div>
     <div class="tier">
       <span class="k">Getting it</span>
       <div class="cues">
         <span class="cue got">Stay</span>
-        <span class="cue got">Stand</span>
         <span class="cue got">Drop it</span>
         <span class="cue got">Bang</span>
         <span class="cue got">Bring the ball</span>
-        <span class="cue got">다른 손 <small>other paw</small></span>
         <span class="cue got">Theo <small>look at me</small></span>
         <span class="cue got">Settle <small>on the mat</small></span>
-        <span class="cue got">Quiet</span>
-        <span class="cue got">기도</span>
+        <span class="cue got">Off</span>
+        <span class="cue got">&ldquo;Go potty&rdquo;</span>
+        <span class="cue got">Come</span>
       </div>
     </div>
     <div class="tier">
       <span class="k">Still working on</span>
       <div class="cues">
-        <span class="cue work">Come <small>~60% when excited</small></span>
         <span class="cue work">Place</span>
-        <span class="cue work">Off</span>
-        <span class="cue work">Up</span>
         <span class="cue work">Spin</span>
         <span class="cue work">Center</span>
-        <span class="cue work">High five</span>
         <span class="cue work">Heel</span>
-        <span class="cue work">&ldquo;Go potty&rdquo;</span>
         <span class="cue work">인사</span>
       </div>
     </div>
