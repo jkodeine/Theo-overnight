@@ -1,0 +1,444 @@
+<title>Theo's Overnight Guide</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one narrow column sized for a phone screenshot, matching Theo's Sitter Sheet.
+   Care instructions are grouped by how the item is cleaned, so a sitter can find the
+   right card from the item in their hand. */
+:root{
+  --paper:#EFF2F0; --card:#FFFFFF; --sunk:#E4E9E6;
+  --ink:#18231E; --ink-2:#3B4A43; --soft:#6B7A72; --rule:#D5DCD8;
+  --green:#2F6B57; --green-soft:#DEEAE4;
+  --amber:#9A6210; --amber-soft:#F5E9D4;
+  --blue:#3E5891; --blue-soft:#E0E5F1;
+  --rust:#A24830; --rust-soft:#F3DFD9;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Figtree",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111714; --card:#1A211D; --sunk:#151B18;
+    --ink:#E7EDE9; --ink-2:#C0CBC5; --soft:#8B9892; --rule:#2A332E;
+    --green:#7FC2A5; --green-soft:#193026;
+    --amber:#DDAE5C; --amber-soft:#332812;
+    --blue:#93A7DC; --blue-soft:#1C2338;
+    --rust:#DD8E78; --rust-soft:#331C16;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111714; --card:#1A211D; --sunk:#151B18;
+  --ink:#E7EDE9; --ink-2:#C0CBC5; --soft:#8B9892; --rule:#2A332E;
+  --green:#7FC2A5; --green-soft:#193026;
+  --amber:#DDAE5C; --amber-soft:#332812;
+  --blue:#93A7DC; --blue-soft:#1C2338;
+  --rust:#DD8E78; --rust-soft:#331C16;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:24px 34px;display:flex;flex-direction:column;gap:15px}
+h1,h2{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:30px;line-height:1.1}
+h2{font-size:15.5px}
+
+.top{display:flex;flex-direction:column;gap:5px}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.sub{color:var(--ink-2);font-size:14px;margin:0}
+
+.card{background:var(--card);border:1px solid var(--rule);border-radius:12px;
+  padding:15px 16px;display:flex;flex-direction:column;gap:11px;min-width:0}
+.card.lead{border-left:3px solid var(--green)}
+.card.food{border-left:3px solid var(--amber)}
+.card.wash{border-left:3px solid var(--blue)}
+.card.heads{border-left:3px solid var(--rust)}
+.card.thanks{border-left:3px solid var(--green)}
+.chead{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.tagline{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);text-align:right}
+
+ul,ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px}
+ol.steps{padding-left:21px}
+ol.steps li{font-size:14.5px;color:var(--ink)}
+ol.steps li::marker{font-family:var(--mono);font-size:12px;color:var(--green)}
+li{font-size:14px;color:var(--ink-2)}
+li::marker{color:var(--soft)}
+li strong{color:var(--ink);font-weight:600}
+
+.note{font-size:13px;color:var(--soft);margin:0}
+.note strong{color:var(--ink-2)}
+.k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+
+/* Care items: name on top, then Wash / Dry pairs underneath */
+.items{display:flex;flex-direction:column}
+.item{display:flex;flex-direction:column;gap:5px;padding:10px 0;border-top:1px solid var(--rule)}
+.item:first-child{border-top:0;padding-top:0}
+.item:last-child{padding-bottom:0}
+.nm{font-size:14.5px;font-weight:600;color:var(--ink)}
+.nm small{font-weight:400;font-size:12.5px;color:var(--soft);margin-left:4px}
+.how{display:grid;grid-template-columns:44px minmax(0,1fr);gap:3px 12px;align-items:baseline}
+.how span:nth-child(even){font-size:14px;color:var(--ink-2);min-width:0}
+
+.rules{display:flex;flex-wrap:wrap;gap:6px}
+.rule{font-size:13px;padding:4px 10px;border-radius:999px;background:var(--rust-soft);color:var(--rust);border:1px solid var(--rust)}
+
+.tier{display:flex;flex-direction:column;gap:6px}
+.cues{display:flex;flex-wrap:wrap;gap:6px}
+.cue{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--rule);background:var(--sunken);color:var(--ink-2);
+  font-family:var(--body),"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif}
+.cue small{font-size:11.5px;color:var(--soft);margin-left:3px}
+.cue.solid{background:var(--green-soft);color:var(--green);border-color:var(--green)}
+.cue.solid small{color:var(--green);opacity:.8}
+.cue.got{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+.cue.got small{color:var(--blue);opacity:.8}
+.cue.work{background:var(--amber-soft);color:var(--amber);border-color:var(--amber)}
+.cue.work small{color:var(--amber);opacity:.8}
+.sect{display:flex;flex-direction:column;gap:11px}
+.sect + .sect{border-top:1px solid var(--rule);padding-top:14px}
+.sect h3{margin:0;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.ty{font-family:var(--display);font-weight:500;font-size:16px;line-height:1.35;color:var(--ink);margin:0;text-wrap:balance}
+
+
+details.card{gap:0}
+summary.chead{cursor:pointer;list-style:none;align-items:center}
+summary.chead::-webkit-details-marker{display:none}
+summary.chead::after{content:"";flex:none;width:7px;height:7px;border-right:2px solid var(--soft);border-bottom:2px solid var(--soft);transform:rotate(45deg);margin-left:4px;transition:transform .15s}
+details[open]>summary.chead::after{transform:rotate(-135deg)}
+summary.chead .tagline{margin-left:auto}
+.body{display:flex;flex-direction:column;gap:11px;padding-top:11px}
+a{color:var(--green);font-weight:600}
+@media print{
+  :root{--paper:#fff;--card:#fff}
+  body{font-size:12.5px}
+  .wrap{max-width:100%;padding-block:0;gap:10px}
+  h1{font-size:24px}
+  .card{break-inside:avoid;page-break-inside:avoid;padding:10px 12px;gap:7px}
+}
+
+.tabs{position:sticky;top:0;z-index:10;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;
+  background:var(--paper);padding:8px 16px;margin:0 -16px;border-bottom:1px solid var(--rule)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;font:inherit;font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);
+  border:1px solid var(--rule);border-radius:999px;padding:0 14px;min-height:40px;cursor:pointer;white-space:nowrap}
+.tab.on{background:var(--green);border-color:var(--green);color:var(--card)}
+.tab:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.panel{display:flex;flex-direction:column;gap:15px}
+.js .panel{display:none}
+.js .panel.on{display:flex}
+@media print{.tabs{display:none}.js .panel{display:flex}}
+</style>
+
+<div class="wrap">
+
+  <div class="top">
+    <div class="eyebrow">Overnight guide</div>
+    <h1>Theo</h1>
+    <p class="sub">For stays of a night or longer. Tap a tab to jump to a topic.</p>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Guide sections">
+    <button class="tab on" id="t-about" role="tab" type="button" aria-selected="true" aria-controls="p-about" data-t="about">About Theo</button>
+    <button class="tab" id="t-food" role="tab" type="button" aria-selected="false" aria-controls="p-food" data-t="food">Food</button>
+    <button class="tab" id="t-nights" role="tab" type="button" aria-selected="false" aria-controls="p-nights" data-t="nights">Bedtime &amp; potty</button>
+    <button class="tab" id="t-training" role="tab" type="button" aria-selected="false" aria-controls="p-training" data-t="training">Training</button>
+    <button class="tab" id="t-grooming" role="tab" type="button" aria-selected="false" aria-controls="p-grooming" data-t="grooming">Grooming</button>
+    <button class="tab" id="t-clean" role="tab" type="button" aria-selected="false" aria-controls="p-clean" data-t="clean">Cleaning</button>
+    <button class="tab" id="t-vet" role="tab" type="button" aria-selected="false" aria-controls="p-vet" data-t="vet">Vet</button>
+  </div>
+
+  <section class="panel on" id="p-about" role="tabpanel" aria-labelledby="t-about">
+  <div class="card heads">
+    <div class="chead"><h2>About Theo</h2><span class="tagline">read first</span></div>
+    <ul>
+      <li><strong>He&rsquo;s a puppy!</strong> He gets overexcited, has little impulse control and can&rsquo;t wait for anything. Keep kibble on you to randomly reward him when he&rsquo;s patient, quiet, or stops at your first &ldquo;ah-ah&rdquo; or &ldquo;drop it&rdquo;. Make him wait, release him with &ldquo;okay&rdquo;, and treat him for waiting.</li>
+      <li><strong>Overexcited, zoomies or biting usually means overtired.</strong> Time for a nap.</li>
+      <li><strong>He hates three things, so pay him in kibble every time:</strong> having his harness and leash put on or taken off, being handled or groomed, and having his paws and hygienic areas wiped. Details are in &ldquo;How to ask&rdquo;.</li>
+      <li><strong>He&rsquo;s at peak teething,</strong> so be extra careful about what he can reach. He will ruin it.</li>
+      <li><strong>If a tooth falls out, please save it if you can.</strong></li>
+      <li><strong>He&rsquo;s still learning what he can and can&rsquo;t eat.</strong> He tries to chew and eat paper towels and wipes, so watch him closely when wiping his paws and face. He has also tried to eat part of a plant, so keep plants out of reach or supervise him closely.</li>
+      <li><strong>Outside the pen, keep him leashed</strong> (a slip leash is fine) so he can&rsquo;t outrun you. No leash needed for potty trips to the backyard.</li>
+      <li><strong>No walks needed.</strong> He&rsquo;ll have just had his last vaccine, so the backyard is best for potty and play.</li>
+      <li><strong>Harness:</strong> it&rsquo;s packed, but he&rsquo;s growing out of it. It still fits but it&rsquo;s snug and a bit restrictive, so please avoid it unless needed. I&rsquo;ll get him a new one in Korea.</li>
+      <li>He&rsquo;s working on <strong>Leave it</strong> and <strong>Drop it</strong>, but his curiosity is strong and he wants to put everything in his mouth. Keep an eye on what&rsquo;s around him and move things out of the way.</li>
+      <li><strong>Bori has full authority to correct Theo</strong> and put him in his place.</li>
+      <li><strong>He loves people</strong> and is easily distracted by new ones.</li>
+    </ul>
+  </div>
+  </section>
+
+  <section class="panel" id="p-food" role="tabpanel" aria-labelledby="t-food">
+  <div class="card food">
+    <div class="chead"><h2>Food</h2><span class="tagline">meals &amp; treats</span></div>
+    <div class="body">
+    <div class="sect">
+    <h3>Meals</h3>
+    <ul>
+      <li><strong>Daily total: &frac34;&ndash;1 cup</strong> (12&ndash;16 tbsp).</li>
+      <li><strong>Calories: about 390 a day in total.</strong> &frac34; cup of kibble is about 295, which leaves about 95 for treats and extras. About 50 of that is the Kong and lick mat fillings. The more treats he has, the less kibble he needs.</li>
+      <li><strong>No free-feeding</strong> and no set meal times. He eats in small tbsp portions spread through the day.</li>
+      <li>Each morning, measure the whole day&rsquo;s kibble into a container. Then hand it out with a <strong>tbsp measuring cup</strong>, one scoop at a time, in the snuffle mat, puzzles and training. What&rsquo;s left in the container is what&rsquo;s left for the day.</li>
+      <li>It&rsquo;s a good idea to play <strong>sound desensitization videos on YouTube</strong> during his meals. Once a day is fine, at a time of your choosing. We&rsquo;ve worked up to a moderate volume. If he seems bothered, turn it down.</li>
+      <li>Before his <strong>first and last meal</strong> of the day, we sing <strong>나 날마다 우리에게</strong>. Please sing it with him too.</li>
+    </ul>
+    </div>
+
+    <div class="sect">
+    <h3>Treats</h3>
+    <ul>
+      <li><strong>Frozen Kongs:</strong> 1.5 tbsp kibble plus 1 tbsp Greek yogurt and/or pumpkin puree, closed at the top with about 1 tsp peanut butter.</li>
+      <li><strong>Frozen lick mats:</strong> 10 kibbles plus 2 tbsp of Greek yogurt and/or pumpkin puree, then freeze.</li>
+      <li>I&rsquo;ll leave some prepared in the freezer. You may need to clean and refill them.</li>
+      <li><strong>Fillings:</strong> about 3 tbsp a day in total, mostly Greek yogurt and pumpkin puree, plus about 1 tsp peanut butter to close the Kong. About 50 kcal. Peanut butter is the calorie-dense one, so keep it to a tsp.</li>
+      </ul>
+    </div>
+
+    <div class="sect">
+    <h3>Chews &amp; extras</h3>
+    <p class="note"><strong>About 45 kcal a day.</strong> Give one, or a mix, until you reach it. <strong>Chews need supervision.</strong></p>
+    <ul>
+      <li><strong>Charlee Bear treats:</strong> cut each one in half. About 1 kcal per half.</li>
+      <li><strong>Puppy rings:</strong> microwave for 5&ndash;8 seconds, cut in half, then feed him half of that (&frac14; of a ring), in two pieces so it&rsquo;s easy to grip. About 25 kcal.</li>
+      <li><strong>Enzymatic chew:</strong> &frac12; a chew. About 15 kcal.</li>
+      <li><strong>Turkey tendon (Pupford):</strong> about 15&ndash;22 kcal per piece.</li>
+      <li><strong>Frozen baby carrot:</strong> 1 a day at most. About 4 kcal.</li>
+    </ul>
+    </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="panel" id="p-nights" role="tabpanel" aria-labelledby="t-nights">
+  <div class="card lead">
+    <div class="chead"><h2>Bedtime, crate &amp; potty</h2><span class="tagline">sleep &amp; potty</span></div>
+    <div class="body">
+      <ul>
+        <li><strong>Bedtime is around 9 PM.</strong> He usually wakes between <strong>6 and 7 AM</strong>.</li>
+        <li><strong>He&rsquo;s usually good in the crate with the covers on.</strong> Without covers he gets anxious.</li>
+        <li>Keep the <strong>sound machine</strong> on. It helps drown out noise.</li>
+        <li><strong>Overnight he can hold it up to 9 hours</strong>, but it&rsquo;s safer to take him out once in the night. I usually take him out between <strong>11 and 11:30 PM</strong> before I go to sleep, or you can do it early in the morning and go back to sleep. The pad holder is fine, so you don&rsquo;t have to wipe his paws late at night.</li>
+        <li><strong>Supervised potty trip after every nap.</strong></li>
+        <li><strong>How often:</strong> outside he can hold it up to 4.5 hours, but at home he goes every 1.5&ndash;2 hours.</li>
+        <li><strong>Pad or grass, whichever you prefer.</strong> I&rsquo;m training him to use both. Change the pad once a day, not after every pee.</li>
+        <li>He sniffs his poop but won&rsquo;t eat it.</li>
+        <li>He&rsquo;s learning the <strong>&ldquo;go potty&rdquo;</strong> cue, so say it as he goes and treat him.</li>
+        <li><strong>Water:</strong> take the water container off the crate before he goes to sleep. Rinse it, ideally wash it, before you reattach it the next morning. He doesn&rsquo;t need a separate water bowl.</li>
+        <li>After waking he usually waits patiently until you let him out. If he whines, either it&rsquo;s been a while and he&rsquo;s ready to come out, or he needs to potty.</li>
+        <li>Sometimes he wakes early just to potty. If you&rsquo;re tired, take him out and put him back in the crate. He should go back to sleep for another 30 minutes or so.</li>
+        <li><strong>Naptime ritual:</strong> kitchen lights off, crate covers closed, sound machine on, then say <strong>&ldquo;crate&rdquo;</strong>. Potty right after he wakes.</li>
+        <li><strong>Accidents:</strong> blot it up, then soak the spot with an <strong>enzyme cleaner</strong> (Nature&rsquo;s Miracle or similar) and leave it for 15&ndash;20 minutes.</li>
+      </ul>
+    </div>
+  </div>
+  </section>
+
+  <section class="panel" id="p-training" role="tabpanel" aria-labelledby="t-training">
+  <div class="card lead">
+    <div class="chead"><h2>Cues</h2><span class="tagline">pay with treats</span></div>
+    <div class="body">
+    <div class="tier">
+      <span class="k">Solid</span>
+      <div class="cues">
+        <span class="cue solid">Sit</span>
+        <span class="cue solid">Wait &rarr; Okay</span>
+        <span class="cue solid">Crate</span>
+        <span class="cue solid">Leave it</span>
+        <span class="cue solid">Gentle</span>
+        <span class="cue solid">손 <small>paw</small></span>
+        <span class="cue solid">코 <small>nose</small></span>
+        <span class="cue solid">Down</span>
+        <span class="cue solid">얼짱</span>
+      </div>
+    </div>
+    <div class="tier">
+      <span class="k">Getting it</span>
+      <div class="cues">
+        <span class="cue got">Stay</span>
+        <span class="cue got">Stand</span>
+        <span class="cue got">Drop it</span>
+        <span class="cue got">Bang</span>
+        <span class="cue got">Bring the ball</span>
+        <span class="cue got">다른 손 <small>other paw</small></span>
+        <span class="cue got">Theo <small>look at me</small></span>
+        <span class="cue got">Settle <small>on the mat</small></span>
+        <span class="cue got">Quiet</span>
+        <span class="cue got">기도</span>
+      </div>
+    </div>
+    <div class="tier">
+      <span class="k">Still working on</span>
+      <div class="cues">
+        <span class="cue work">Come <small>~60% when excited</small></span>
+        <span class="cue work">Place</span>
+        <span class="cue work">Off</span>
+        <span class="cue work">Up</span>
+        <span class="cue work">Spin</span>
+        <span class="cue work">Center</span>
+        <span class="cue work">High five</span>
+        <span class="cue work">Heel</span>
+        <span class="cue work">&ldquo;Go potty&rdquo;</span>
+        <span class="cue work">인사</span>
+      </div>
+    </div>
+    <p class="note">Words he knows: <strong>Ball</strong> (mostly there) and <strong>Bunny</strong> (just starting). The Korean trick words are 손, 코, 다른 손, 얼짱, 기도 and 인사.</p>
+    </div>
+  </div>
+
+  <div class="card heads">
+    <div class="chead"><h2>How to ask</h2><span class="tagline">training notes</span></div>
+    <div class="body">
+    <ul>
+      <li><strong>&ldquo;Okay&rdquo; releases him</strong>, ideally with a hand cue. At the crate door he waits on his own until you say it.</li>
+      <li><strong>손 (paw) is his default answer</strong> to everything. If you asked for something else, don&rsquo;t pay the paw. Wait for the right move, and for 코 (nose) reward only the nose.</li>
+      <li><strong>Down and Off:</strong> use the hand gesture first and the word later. For Down, lower an empty hand rather than leading with the treat.</li>
+      <li><strong>Entering the pen:</strong> he has to be sitting with all four paws on the floor before you step in. If he jumps, say &ldquo;off&rdquo; and wait, or turn your back.</li>
+      <li><strong>Leave it and Drop it:</strong> trade up for something better and never chase him. Drop it is hardest when he really wants the thing.</li>
+      <li><strong>Quiet:</strong> for demand barking, don&rsquo;t look at or touch him and say nothing. When the barking stops, say &ldquo;yes!&rdquo;, then &ldquo;quiet&rdquo;, then give the treat. Stretch the silence a little each time.</li>
+      <li><strong>Come:</strong> say his name, then &ldquo;come!&rdquo; in a happy voice. It&rsquo;s solid inside the apartment only, so keep him on a leash (a slip leash is fine) anywhere else.</li>
+      <li><strong>Harness and leash on/off:</strong> he hates it, and the harness is snug, so skip it unless needed. If you do use it, treat with kibble when it goes on, again when it comes off, and in between if he stays calm.</li>
+      <li><strong>Wiping paws and hygienic areas:</strong> he hates it, so treat with kibble the whole time. It&rsquo;s easiest if you hold him against you with his front paws on your shoulder, like a hug. You can reach everything and he can&rsquo;t bite you.</li>
+      <li><strong>Brush, trimmers and nail tools:</strong> he&rsquo;s still wary and can get mouthy, and paws are the hardest. Let him come to the tool, treat on contact, and keep the lick mat going the whole time.</li>
+    </ul>
+    </div>
+  </div>
+  </section>
+
+  <section class="panel" id="p-grooming" role="tabpanel" aria-labelledby="t-grooming">
+  <div class="card lead">
+    <div class="chead"><h2>Daily grooming</h2><span class="tagline">once a day</span></div>
+    <div class="body">
+    <p class="note"><strong>No baths or nail trims needed.</strong> I&rsquo;ll do those before I drop him off. He can&rsquo;t be fully groomed until I&rsquo;m back, so sorry he&rsquo;ll be so hairy!</p>
+    <p class="note"><strong>Grooming is one of the things he hates.</strong> Treat him with kibble throughout, not just at the end. This is when he can bite (hard), so please be careful.</p>
+    <p class="note"><strong>Wipe his paws and hygienic areas once a day,</strong> since he&rsquo;ll be playing and going potty in the backyard. Use the hug hold from the Training tab, then apply the <strong>Dandelion paw balm</strong>.</p>
+    <ol class="steps">
+      <li><strong>Leash.</strong> Put him on a slip leash. I sometimes tether it to something like the pen first so he has limited movement.</li>
+      <li><strong>Set up.</strong> Lay your tools out where you can see them but he can&rsquo;t reach.</li>
+      <li><strong>Teeth.</strong> Treat, brush, then treat again. No toothpaste yet. Use the green silicone finger brush for 30 seconds max. It doesn&rsquo;t need to be thorough, since he still has puppy teeth. It&rsquo;s mostly preventive and gets him used to it.</li>
+      <li><strong>Detangler.</strong> Spray <strong>We Love Doodles unscented detangler</strong> all over him, then run your fingers through his coat once to spread it evenly.</li>
+      <li><strong>Lick mat, then brush.</strong> Give him the lick mat and position him so you can reach the area you&rsquo;re working on. Brush him through with the slicker brush. The worst tangles are around his tail and rear end. It&rsquo;s a race between him finishing the lick mat and you finishing the brushing.</li>
+      <li><strong>Check for tangles.</strong> Go over his body with the long metal comb, using the wide-toothed end, to find any spots that need extra attention.</li>
+      <li><strong>Face.</strong> Hold his lower jaw and use the small blue comb. Say &ldquo;wait&rdquo;, brush his eyebrows and the top of his head, then treat. Brush one side of his face, then treat. Brush the other side, then treat.</li>
+    </ol>
+    <p class="note">His coat is loose, soft waves and mats less than most doodles, so <strong>once a day is the limit</strong> unless there&rsquo;s a tangle that needs working out. The lick mat is for grooming only. Wash it afterward (top rack of the dishwasher).</p>
+    </div>
+  </div>
+  </section>
+
+  <section class="panel" id="p-clean" role="tabpanel" aria-labelledby="t-clean">
+  <div class="card wash">
+    <div class="chead"><h2>Cleaning</h2><span class="tagline">washable &amp; not</span></div>
+    <div class="body">
+    <div class="sect">
+    <h3>Washable</h3>
+    <p class="note">My washer has <strong>Cold, Warm and Hot</strong> only. Use Cold unless an item says otherwise. <strong>Never Hot, never bleach, never fabric softener, never iron.</strong></p>
+    <div class="items">
+      <div class="item">
+        <div class="nm">Navy pee pads <small>Amazon, 2-pack</small></div>
+        <div class="how"><span class="k">Wash</span><span>Cold or Warm, regular cycle</span><span class="k">Dry</span><span>Low in the dryer, or hang to dry</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Khaki pee pad <small>Chewy</small></div>
+        <div class="how"><span class="k">Wash</span><span>Cold</span><span class="k">Dry</span><span>Hang to dry</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Crate pee pads <small>Aitmexcn, 18&times;24&Prime;</small></div>
+        <div class="how"><span class="k">Wash</span><span>Cold. No care label, so keep it gentle</span><span class="k">Dry</span><span>Hang to dry. The backing is gel and PVC</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Large cooling mat <small>Arc-Chill</small></div>
+        <div class="how"><span class="k">Wash</span><span>Cold, delicate cycle</span><span class="k">Dry</span><span>Low in the dryer</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Flower snuffle mat</div>
+        <div class="how"><span class="k">Wash</span><span>Cold or Warm, not Hot</span><span class="k">Dry</span><span>Low in the dryer</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Olive sling bag <small>Lambwolf</small></div>
+        <div class="how"><span class="k">Wash</span><span>Cold, mild detergent. Spot clean stains with a damp cloth</span><span class="k">Dry</span><span>Hang to dry, no dryer</span></div>
+      </div>
+    </div>
+    <p class="note">I wash the pee pads together with soiled towels in one Cold load, and air-dry the pads.</p>
+    </div>
+
+    <div class="sect">
+    <h3>Not washable</h3>
+    <div class="items">
+      <div class="item">
+        <div class="nm">Crate cover <small>Explore Land, black</small></div>
+        <div class="how"><span class="k">Wash</span><span>Soft brush and luke-warm water. Spot clean the outside only</span><span class="k">Dry</span><span>Line dry or lay flat somewhere cool. No dryer</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Treat bag <small>Everyyay belt tote</small></div>
+        <div class="how"><span class="k">Wash</span><span>Wipe the inside with a clean damp cloth. Spot clean the outside</span><span class="k">Dry</span><span>Let it dry completely before it goes in a drawer</span></div>
+      </div>
+    </div>
+    <ul>
+      <li>Never put the crate cover back on <strong>damp</strong>. It will mildew. If it does, scrub gently with mild soap and let it dry in sunlight.</li>
+      <li>Clean it only when it needs it. Each wash wears down the water-repellent coating.</li>
+      <li>Fasten the toggles at <strong>all four corners</strong> so he can&rsquo;t pull or chew it, and keep one or two flaps open for air.</li>
+    </ul>
+    </div>
+
+    <div class="sect">
+    <h3>Toys &amp; bowls</h3>
+    <div class="items">
+      <div class="item">
+        <div class="nm">Top rack only</div>
+        <div class="how"><span class="k">Items</span><span>Lickin&rsquo; Layers feeder, stainless bowls, lick mat, Kong</span></div>
+      </div>
+      <div class="item">
+        <div class="nm">Dog Casino puzzle</div>
+        <div class="how"><span class="k">Wash</span><span><strong>Rinse with water only.</strong> It is not dishwasher safe</span></div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
+  </section>
+
+  <section class="panel" id="p-vet" role="tabpanel" aria-labelledby="t-vet">
+  <div class="card food">
+    <div class="chead"><h2>Vet &amp; insurance</h2><span class="tagline">just in case</span></div>
+    <div class="body">
+      <ul>
+        <li><strong>Modern Animal:</strong> he has an <strong>All Access membership</strong>. Find a clinic on the <a href="https://www.modernanimal.com/locations" target="_blank" rel="noopener">Modern Animal locations page</a>.</li>
+        <li><strong>Pet insurance: Pumpkin</strong>, accident &amp; illness plan. $500 annual deductible, 90% reimbursement, unlimited annual limit.</li>
+      </ul>
+      <p class="note">If you need to file a claim or see the policy details, text me and I&rsquo;ll send them.</p>
+    </div>
+  </div>
+  </section>
+
+  <div class="card thanks">
+    <p class="note" style="margin:0">Text me anything, including the dumb questions. His vet is Modern Animal. They have 24/7 chat in their app if something feels off and I&rsquo;m slow to answer.</p>
+    <p class="ty">Thank you.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  var tabs=[].slice.call(document.querySelectorAll(".tab")), bar=document.querySelector(".tabs");
+  function show(k,focus){
+    tabs.forEach(function(t){var on=t.dataset.t===k;t.classList.toggle("on",on);t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;
+      var p=document.getElementById("p-"+t.dataset.t); if(p)p.classList.toggle("on",on);
+      if(on){try{t.scrollIntoView({inline:"center",block:"nearest"})}catch(e){} if(focus)t.focus()}});
+    if(bar&&bar.getBoundingClientRect().top<=1){try{bar.scrollIntoView({block:"start"})}catch(e){}}
+    try{history.replaceState(null,"","#"+k)}catch(e){}
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){show(t.dataset.t)});
+    t.addEventListener("keydown",function(e){
+      var n=e.key==="ArrowRight"?i+1:e.key==="ArrowLeft"?i-1:null;
+      if(n===null)return; e.preventDefault(); show(tabs[(n+tabs.length)%tabs.length].dataset.t,true);
+    });
+  });
+  var h="";try{h=location.hash.slice(1)}catch(e){}
+  show(tabs.some(function(t){return t.dataset.t===h})?h:tabs[0].dataset.t);
+})();
+</script>
